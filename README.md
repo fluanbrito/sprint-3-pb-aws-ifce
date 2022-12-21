@@ -12,6 +12,7 @@ Avaliação da terceira sprint do programa de bolsas Compass.uol para formação
 
 ## Entrega
 - Aceitar o convite do repositório da sprint-3-pb-aws-ifce;
+- **O trabalho deve ser feito em grupos de três pessoas**;
 - Criar uma branch no repositório com o formato grupo-número (Exemplo: grupo-1);
 - **Conferir se o datase desejado já não foi escolhida por outro grupo**;
 - Subir o trabalho na branch com um readme.md, documentando detalhes sobre como a avaliação foi desenvolvida, dificuldades conhecidas e como utilizar o sistema;

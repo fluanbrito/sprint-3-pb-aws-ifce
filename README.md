@@ -9,7 +9,10 @@ Avaliação da terceira sprint do programa de bolsas Compass.uol para formação
 ---
 
 ## Dataset
-Cifar100 ou Oxford_iiit_pets
+Oxford_iiit_pets
+
+## Status
+Dando andamento com os testes 
 
 
 ---

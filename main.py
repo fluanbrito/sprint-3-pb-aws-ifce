@@ -36,22 +36,15 @@ def criarh5(binary_data, file_name):
 
 @app.route("/", methods=["GET"])
 def index():
-    #criartabela()
-    #addmodel("modelo","modelo.h5")
-    #upload = Upload.query.filter_by(id=1).first()
-    #criarh5(upload.data,"criado.h5")
-    #print(BytesIO(upload.data))
-
     return render_template('index.html')
 
 @app.route("/", methods=["POST"])
 def post_file():
     arquivo=request.files.get("minhaImage")
     modelo=request.files.get("minhaimagem")
-    path="images/"+arquivo.filename
-    arquivo.save(path)
-    upload = Upload.query.filter_by(id=1).first()
-    a=modelTF.readModel(path)
+    patch="images/"+arquivo.filename
+    arquivo.save(patch)
+    a=modelTF.readModel(patch,"modelo_treinado\modelo.h5")
     return a[0]
 
 

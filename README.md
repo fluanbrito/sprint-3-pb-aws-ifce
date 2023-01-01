@@ -40,20 +40,22 @@ import numpy as np
 import cv2
 ```
 
+Chamamos as bibliotecas que serão utilizadas na aplicação.
+
 ```python
 from keras.datasets import mnist
 objects = mnist
 (train_img, train_lab), (test_img, test_lab) = objects.load_data()
 ```
 
-Observe que foi iniciado o download das imagens.
+Importamos o DataSet MNIST do Keras, instanciando-o. Carregamos os dados e dividimos-os em imagens/dígitos de treino e teste. Observe que foi iniciado o download das imagens presentes no DataSet.
 
 ```python
 plt.imshow(train_img[5])
 print(train_lab[5])
 ```
 
-Veja que com a utilização do comando print, foi gerada a imagem pertecente ao train.
+Com auxílio do comando print e método **imshow()**, foi gerada uma imagem/dígito presente no DataSet para demonstração.
 
 ```python
 for i in range(20):
@@ -64,14 +66,14 @@ for i in range(20):
   plt.axis('off')
 ```
 
-Caso você tenha exercido cada linha de comando correta, foi gerado uma tabela com diferentes imagens de dígitos manuscritos cada qual correspondente à um digito diferente de 0 - 9.
+Geramos uma tabela com diferentes imagens de dígitos manuscritos, cada qual correspondente à um digito diferente de 0 - 9.
 
 ```python
-print('Shape imagens de treino: ',train_img.shape)
-print('Shape imagens de teste: ',test_img.shape)
+print('Shape imagens de treino: ', train_img.shape)
+print('Shape imagens de teste: ', test_img.shape)
 ```
 
-Comando usado para gerar as informações de tamanho e formato de ambas as classes de imagens. Observe o resultado:
+Usamos o método **shape** para gerar as informações de tamanho e formato de ambas as classes de imagens.
 
 ```python
 train_img = train_img / 255.0
@@ -82,7 +84,7 @@ Normalização das imagens.
 
 ```python
 from keras.models import Sequential
-from keras.layers import Flatten,Dense
+from keras.layers import Flatten, Dense
 model = Sequential()
 
 input_layer = Flatten(input_shape=(28,28))
@@ -97,35 +99,40 @@ model.add(output_layer)
 model.summary()
 ```
 
-Observe que foi gerado as informações do modelo sequencial, tais como: tipo, sua saída junto do seu formato e os parâmetros.
+=== Observe que foi gerado as informações do modelo sequencial, tais como: tipo, sua saída junto do seu formato e os parâmetros. ===
 
 ```python
-# Compilando o modelo sequencial
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 ```
+
+Compilamos o modelo sequencial.
 
 ```python
 model.fit(train_img, train_lab, epochs=10)
 ```
 
+Fitamos o modelo utilizando nossos conjuntos de dados de treino.
+
 ```python
-# Acesso ao Google Drive
 from google.colab import drive
 drive.mount('/content/drive')
 ```
 
+Criamos um acesso ao Google Drive e montamos um diretório.
+
 ```python
-# Salvar modelo no Google Drive
 model.save('/content/drive/MyDrive/Colab Notebooks/Remote Sensing/Save/model.h5')
 ```
 
+Salvamos nosso modelo no Google Drive.
+
 ```python
-# Use quando treinar o modelo
 model.load_weights('/content/drive/MyDrive/Colab Notebooks/Remote Sensing/Save/model.h5')
 
-# Compilando o modelo sequencial
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 ```
+
+Quando formos treinar o modelo acessamos ele no diretório no Drive, e carregamos os **pesos**. E novamente compilamos o modelo sequencial.
 
 ```python
 loss_and_acc = model.evaluate(test_img, test_lab, verbose=2)
@@ -133,7 +140,7 @@ print("Teste de perda", loss_and_acc[0])
 print("Teste de precisão", loss_and_acc[1])
 ```
 
-Observe os resultados apurados:
+Avaliamos o modelo, e exibimos suas métricas de perda e precisão.
 
 ```python
 plt.imshow(test_img[0], cmap='gray_r')
@@ -148,19 +155,13 @@ else:
   print('Previsão sem sucesso')
 ```
 
-```python
-from IPython.display import Image
-Image(test_img[2], width=250, height=250)
-#plt.imshow(test_img[2], cmap='gray_r')
-```
+Realizamos uma predição de um dígito manuscrito presente no DataSet.
 
 ```python
-# Faça uma predição para uma nova imagem
 from keras_preprocessing.image import load_img
 from keras_preprocessing.image import img_to_array
 from keras.models import load_model
 
-# Carregar e preparar a imagem
 def load_image(filename):
 
   # Carregar a imagem
@@ -179,6 +180,8 @@ def load_image(filename):
   return img
 ```
 
+Criamos uma função que realizará o tratamento de uma imagem que será passada pelo usuário. Com auxílio dos módulos de processamento de imagem, presentes no Keras.
+
 ```python
 from google.colab import files
 uploaded = files.upload()
@@ -189,23 +192,25 @@ for filename in uploaded.keys():
 img = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
 ```
 
-Sinaliza se foi realizado o upload do arquivo.
+Usamos a biblioteca do Colab para realizar o upload da imagem.
 
 ```python
 img = load_image(filename)
 label = int(input('Número atual = '))
 predict = model.predict(img)
 classify = np.argmax(predict)
-print('Valor predito: ', classify)
+print('Valor predito:', classify)
 
 if(label == (np.argmax(predict))):
   print('Previsão bem-sucedida')
 else:
   print('Previsão sem sucesso')
 
-show=cv2.imread(filename)
+show = cv2.imread(filename)
 plt.imshow(show)
 ```
+
+Por fim realizamos a predição da imagem enviada pelo usuário.
 
 ## CONCLUSÃO
 

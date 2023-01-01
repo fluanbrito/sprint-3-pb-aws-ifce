@@ -1,22 +1,40 @@
-# Avaliação Sprint 3 - Programa de Bolsas Compass.uol / AWS e IFCE
-
+# Avaliação Sprint 3
 Avaliação da terceira sprint do programa de bolsas Compass.uol para formação em machine learning para AWS.
 
----
+##  Grupo 7:
+- Tecla Fernandes
+- Julio César
+- Jhonnatan Gonçalves
 
-## Execução
-- Com base no notebook apresentado neste tutorial do Tensorflow: https://www.tensorflow.org/tutorials/keras/classification (outros padrões como scikit-learn e pytorch também podem ser usados, no caso de exemplos equivalentes);
-- Trocar por outro dataset para treinamento, e **verificar se já não foi escolhido por outro grupo**. Pode ser usado qualquer dataset do Tensorflow (ou similar de outro padrão), conforme mostra esta listagem: https://www.tensorflow.org/datasets/catalog/overview
-- Armazenar o modelo treinado no MongoDB, ou outro banco de dados de sua preferência;
-- Carregar o modelo armazenado para reconhecer um novo exemplo. Observe o exemplo de reconhecimento na seção "Fazendo Previsões" deste notebook: https://github.com/dsacademybr/DeepLearningBook/blob/master/Cap47/Reconhecimento-Imagens-Redes-Neurais-Convolucionais-Python%E2%80%93V2.ipynb
+----
+## Requisitos
+- IDE
+- Python
+- SGBD
+- Tensor Flow
+----
 
-## Entrega
-- Aceitar o convite do repositório da sprint-3-pb-aws-ifce;
-- **O trabalho deve ser feito em grupos de três pessoas**;
-- Criar uma branch no repositório com o formato grupo-número (Exemplo: grupo-1);
-- **Conferir se o datase desejado já não foi escolhida por outro grupo**;
-- Subir o trabalho na branch com um readme.md, documentando detalhes sobre como a avaliação foi desenvolvida, dificuldades conhecidas e como utilizar o sistema;
-- O prazo de entrega é até às 12h do dia 02/01/2023 no repositório do github (https://github.com/Compass-pb-aws-2022-IFCE/sprint-3-pb-aws-ifce).
+## Dataset [comida101](https://www.tensorflow.org/datasets/catalog/food101)
+
+```
+Este conjunto de dados consiste em 101 categorias de alimentos, com 101.000 imagens. Para cada aula, são fornecidas 250 imagens de teste revisadas manualmente, bem como 750 imagens de treinamento. De propósito, as imagens de treinamento não foram limpas e, portanto, ainda contêm algum ruído. Isso vem principalmente na forma de cores intensas e, às vezes, rótulos errados. Todas as imagens foram redimensionadas para ter um comprimento lateral máximo de 512 pixels.
+```
+- Documentação Adicional : Explore em Papers With Code north_east
+-- [Página inicial](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/)
+
+- Código -fonte: tfds.image_classification.Food101
+
+Versões :
+- 1.0.0 : Sem notas de versão.
+- 2.0.0 (padrão): sem notas de versão.
+- 2.1.0 : Sem notas de versão.
+
+Tamanho do download : 4.65 GiB
+- Armazenado em cache automaticamente ( documentação ): Desconhecido
+
+----
+
+
 
 ---
 ---

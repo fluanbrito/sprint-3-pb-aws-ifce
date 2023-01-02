@@ -4,14 +4,12 @@
 
 [![N|Solid](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/LogoCompasso-positivo.png/440px-LogoCompasso-positivo.png)](https://compass.uol/pt/home/)
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/Jeef-Moreira)
-
 Neste arquivo se encontra detalhado o passo a passo de como foi desenvolvido, utilizando a linguagem Python, todo o procedimento de consumo do DataSet MNIST. Será apresentado:
 - Apresentação do MNIST
 - Ferramentas
 - Comandos
 
-## APRESENTAÇÃO DO MNIST
+## Apresentação do MNIST
 
 **MNIST**: 
 O conjunto de dados MNIST é um acrônimo que significa o conjunto de dados Instituto Nacional Modificado de Padrões e Tecnologia.
@@ -21,7 +19,7 @@ A tarefa consiste em classificar uma dada imagem de um dígito manuscrito em uma
 É um conjunto de dados amplamente usado e profundamente compreendido e, na maioria das vezes, é “resolvido”. Os modelos de melhor desempenho são redes neurais convolucionais de aprendizado profundo que atingem uma precisão de classificação acima de 99%, com uma taxa de erro entre 0,4% e 0,2% no conjunto de dados de teste de retenção.
 
 
-## FERRAMENTAS
+## Ferramentas
 
 As principais ferramentas utilizadas no projeto foram:
 
@@ -29,7 +27,7 @@ As principais ferramentas utilizadas no projeto foram:
 - [Google Colab](https://colab.research.google.com/) - Serviço de nuvem gratuito hospedado pelo próprio Google para incentivar a pesquisa de Aprendizado de Máquina e Inteligência Artificial. Onde executamos nossos códigos em Python.
 - [Visual Studio Code v.1.73.1](https://code.visualstudio.com/) - Editor de código aberto desenvolvido pela Microsoft. Nesse caso, ele foi usado em prol do desenvolvimento deste README do projeto.
 
-## COMANDOS
+## Comandos
 
 Busque um DataSet de sua preferência, no nosso caso escolhemos o DataSet MNIST.
 
@@ -99,7 +97,11 @@ model.add(output_layer)
 model.summary()
 ```
 
-=== Observe que foi gerado as informações do modelo sequencial, tais como: tipo, sua saída junto do seu formato e os parâmetros. ===
+Importamos e instanciamos o modelo sequencial do Keras, e os módulos _Flatten_ e _Dense_ da biblioteca de camadas. Adicionamos ao modelo quatro camadas: a de entrada do tipo Flatten, duas camadas ocultas com função de ativação _Relu_ e uma camada de saída com função de ativação _Softmax_. Estas três últimas do tipo Dense.
+
+![mnist1](https://uploaddeimagens.com.br/images/004/281/387/full/mnist1.png?1672667073)
+
+Observe que foi gerado as informações do modelo sequencial, tais como: tipo, sua saída junto do seu formato e os parâmetros.
 
 ```python
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
@@ -108,10 +110,14 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 Compilamos o modelo sequencial.
 
 ```python
-model.fit(train_img, train_lab, epochs=10)
+model.fit(train_img, train_lab, epochs=3)
 ```
 
 Fitamos o modelo utilizando nossos conjuntos de dados de treino.
+
+![mnist2](https://uploaddeimagens.com.br/images/004/281/392/full/mnist2.png?1672667253)
+
+Ao fitarmos nosso modelo obtemos dados referentes à perdas e precisões de cada _epoch_, a quantidade de _epochs_ define o número de vezes que nosso modelo será treinado, podendo assim aumentar sua precisão. (O baixo número deve-se à quantidade de tempo de processamento)
 
 ```python
 from google.colab import drive
@@ -140,6 +146,8 @@ print("Teste de perda", loss_and_acc[0])
 print("Teste de precisão", loss_and_acc[1])
 ```
 
+![mnist3](https://uploaddeimagens.com.br/images/004/281/399/full/mnist3.png?1672667692)
+
 Avaliamos o modelo, e exibimos suas métricas de perda e precisão.
 
 ```python
@@ -156,6 +164,10 @@ else:
 ```
 
 Realizamos uma predição de um dígito manuscrito presente no DataSet.
+
+![mnist4](https://uploaddeimagens.com.br/images/004/281/402/full/mnist4.png?1672667770)
+
+Nosso modelo conseguiu realizar com sucesso e rapidamente a predição de um dos dígitos manuscritos presentes no DataSet.
 
 ```python
 from keras_preprocessing.image import load_img
@@ -212,14 +224,11 @@ plt.imshow(show)
 
 Por fim realizamos a predição da imagem enviada pelo usuário.
 
-## CONCLUSÃO
+![mnist5](https://uploaddeimagens.com.br/images/004/281/406/full/mnist5.png?1672667948)
 
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+O valor enviado pelo usuário foi predito com sucesso.
 
-   [dev]: <https://github.com/Jeef-Moreira>
-   [dev]: <https://github.com/EdivalcoAraujo>
-   [learning]: <https://compassuol.udemy.com>
-   [boss]: <https://compass.uol/pt/home>
-   [Google Colab]: <https://colab.research.google.com/>
-   [Google Drive]: <https://drive.google.com/drive/my-drive>
-   [Visual Studio Code]: <https://code.visualstudio.com>
+## Autores
+
+* [@EdivalcoAraujo](https://github.com/EdivalcoAraujo)
+* [@Jeef-Moreira](https://github.com/Jeef-Moreira)

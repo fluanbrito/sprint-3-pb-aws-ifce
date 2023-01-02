@@ -26,6 +26,7 @@ As principais ferramentas utilizadas no projeto foram:
 - [DataSet MNIST](https://www.tensorflow.org/datasets/catalog/mnist) - Grande banco de dados de dígitos manuscritos que é amplamente utilizado para treinamento e testes na área de aprendizado de máquina.
 - [Google Colab](https://colab.research.google.com/) - Serviço de nuvem gratuito hospedado pelo próprio Google para incentivar a pesquisa de Aprendizado de Máquina e Inteligência Artificial. Onde executamos nossos códigos em Python.
 - [Visual Studio Code v.1.73.1](https://code.visualstudio.com/) - Editor de código aberto desenvolvido pela Microsoft. Nesse caso, ele foi usado em prol do desenvolvimento deste README do projeto.
+- [Firebase]() - Firebase é um conjunto de serviços de hospedagem para qualquer tipo de aplicativo (Android, iOS, Javascript, Node.js, Java, Unity, PHP, C++...). Oferece NoSQL e hospedagem em tempo real de bancos de dados, conteúdo, autenticação social (Google, Facebook, Twitter e Github) e notificações, ou serviços, como um servidor de comunicação em tempo real.
 
 ## Comandos
 
@@ -36,9 +37,33 @@ import tensorflow as tf
 from matplotlib import pyplot as plt
 import numpy as np
 import cv2
+import pyrebase
+import urllib.request
 ```
 
 Chamamos as bibliotecas que serão utilizadas na aplicação.
+
+```python
+firebaseConfig = {
+  'apiKey': "AIzaSyB__HOXZ8U-0kVjOsb0brpayU3RTXdd8ZI",
+  'authDomain': "fir-test-c0374.firebaseapp.com",
+  'projectId': "fir-test-c0374",
+  'storageBucket': "fir-test-c0374.appspot.com",
+  'messagingSenderId': "1039503808359",
+  'appId': "1:1039503808359:web:539714356b998cd38fc1c2",
+  'measurementId': "G-2GNBXS00CK",
+  'databaseURL': ""
+}
+```
+
+Setamos as configurações do serviço de armazenamento do nosso Firebase (App Web).
+
+```python
+firebase = pyrebase.initialize_app(firebaseConfig)
+storage = firebase.storage()
+```
+
+Inicializamos nosso App Firebase. E instanciamos o serviço de armazenamento.
 
 ```python
 from keras.datasets import mnist
@@ -131,6 +156,20 @@ model.save('/content/drive/MyDrive/Colab Notebooks/Remote Sensing/Save/model.h5'
 ```
 
 Salvamos nosso modelo no Google Drive.
+
+```python
+file = '/content/drive/MyDrive/Colab Notebooks/Remote Sensing/Save/model.h5'
+cloudfilename = 'model.h5'
+storage.child(cloudfilename).put(file)
+```
+
+Pegamos o arquivo armazenado no Drive e armazenamos em nosso BD Firebase.
+
+```python
+storage.child('model.h5').download('/content/drive/MyDrive/Colab Notebooks/Remote Sensing/Firebase/model.h5')
+```
+
+Baixamos o nosso model.h5 armazenado no Firebase e o armazenamos novamente no Drive.
 
 ```python
 model.load_weights('/content/drive/MyDrive/Colab Notebooks/Remote Sensing/Save/model.h5')

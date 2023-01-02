@@ -1,5 +1,4 @@
-from io import BytesIO
-
+import numpy as np
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
@@ -30,22 +29,30 @@ def addmodel(nome,patch):
     db.session.commit()
     pass
 
-def criarh5(binary_data, file_name):
-  with open(file_name, 'wb') as file:
-    file.write(binary_data)
+def criarh5(file_name):
+    upload = Upload.query.filter_by(id=1).first()
+    with open(file_name, 'wb') as file:
+        file.write(upload.data)
+    pass
 
 @app.route("/", methods=["GET"])
 def index():
+    #criartabela()
+    #addmodel("modelo","modelo.h5")
+    #criarh5("modelo_treinado/modelo.h5")
     return render_template('index.html')
 
 @app.route("/", methods=["POST"])
 def post_file():
     arquivo=request.files.get("minhaImage")
-    modelo=request.files.get("minhaimagem")
     patch="images/"+arquivo.filename
     arquivo.save(patch)
-    a=modelTF.readModel(patch,"modelo_treinado\modelo.h5")
-    return a[0]
+    retorno=modelTF.readModel(patch,"modelo_treinado\modelo.h5")
+    predicts=retorno[1][0]
+    previsao=retorno[0]
+    #class_names = ['Avião', 'automobile', 'Pássaro', 'Gato', 'Veado',
+    #          'Cachorro', 'Sapo', 'Cavalo', 'Navio', 'Caminhão']
+    return (f"<h1>O resultado da previsão foi: {previsao}</h1> <h2>Avião: {predicts[0]}</h2> <h2>Carro: {predicts[1]}</h2> <h2>pássaro: {predicts[2]}</h2> <h2>Gato: {predicts[3]}</h2> <h2>Veado: {predicts[4]}</h2> <h2>Cachorro: {predicts[5]}</h2> <h2>Sapo: {predicts[6]}</h2> <h2>Cavalo: {predicts[7]}</h2> <h2>Navio: {predicts[8]}</h2> <h2>Caminhão: {predicts[9]}</h2>")
 
 
 

@@ -33,4 +33,4 @@ if(__name__ == "__main__"):
 
    # Faz a predição
    pred = loaded_model.predict(np.expand_dims(test_image, axis = 0))
-   print("A imagem é: ", classes[int(pred>0.5)])    
+   print("A imagem é: %s com %.2f%%" % (classes[int(pred>0.5)], pred[0][0] * 100))    

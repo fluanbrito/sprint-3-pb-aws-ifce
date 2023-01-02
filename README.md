@@ -108,7 +108,13 @@ for i in range(25):
 plt.show()
 ```
 
+## Armazenamento no MongoDB
 
+Para armazenar o modelo treinado utilizamos o bando de dados NoSQL MongoDB. Conforme código apresentado, foram realizadas a importação da biblioteca json, cujo principal objetivo é permitir que o modelo construído em linguagem Python faça a leitura de strings e arquivos no formato JSON. O uso dessa biblioteca foi necessária, visto que o Banco NoSQL MongoDB armazena arquivos em formato JSON ou CSV.
+Também foi importada a bibliotaca Pymongo, utilizada para estabelecer a conexão com o banco de dados MongoDB.
+O código apresentado mostra a criação da conexão abertura e armarenamento do arquivo referente ao modelo treinado no banco de dados.
+
+![arm_mongodb](https://user-images.githubusercontent.com/103959633/210282712-044707af-37fe-4467-af0a-dab0b7808016.jpg)
 
 
 

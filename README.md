@@ -3,7 +3,7 @@ Avaliação da terceira sprint do programa de bolsas Compass.uol para formação
 
 ##  Grupo 7:
 - Tecla Fernandes
-- Julio César
+- Julio Cesar
 - Jhonnatan Gonçalves
 
 ----
@@ -11,30 +11,20 @@ Avaliação da terceira sprint do programa de bolsas Compass.uol para formação
 - IDE
 - Python
 - SGBD
-- Tensor Flow
+- TensorFlow
 ----
 
-## Dataset [comida101](https://www.tensorflow.org/datasets/catalog/food101)
+## Dataset [tf_flowers](https://www.tensorflow.org/datasets/catalog/tf_flowers)
 
-```
-Este conjunto de dados consiste em 101 categorias de alimentos, com 101.000 imagens. Para cada aula, são fornecidas 250 imagens de teste revisadas manualmente, bem como 750 imagens de treinamento. De propósito, as imagens de treinamento não foram limpas e, portanto, ainda contêm algum ruído. Isso vem principalmente na forma de cores intensas e, às vezes, rótulos errados. Todas as imagens foram redimensionadas para ter um comprimento lateral máximo de 512 pixels.
-```
-- Documentação Adicional : Explore em Papers With Code north_east
--- [Página inicial](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/)
+O conjunto de dados usando para a tarefa de reconhecimento de flores contém 4242 imagens de flores. A coleta de dados é baseada em dados do Flickr, imagens do Google, imagens do Yandex. Você pode usar esse conjunto de dados para reconhecer as flores na foto. As imagens são divididas em cinco classes: daisy, dandelion, roses, sunflowers, tulips. Para cada classe, são aproximadamente 800 fotos. Cada foto tem sua resolusão em aproximadamente 320×240 pixels.
 
-- Código -fonte: tfds.image_classification.Food101
+[Página inicial](https://www.tensorflow.org/tutorials/load_data/images)
 
 Versões :
-- 1.0.0 : Sem notas de versão.
-- 2.0.0 (padrão): sem notas de versão.
-- 2.1.0 : Sem notas de versão.
+- 3.0.1
 
-Tamanho do download : 4.65 GiB
-- Armazenado em cache automaticamente ( documentação ): Desconhecido
+Tamanho do download : 218.21MB
+
+Tamanho do conjunto de dados : 221.83MB
 
 ----
-
-
-
----
----

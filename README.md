@@ -172,7 +172,7 @@ storage.child('model.h5').download('/content/drive/MyDrive/Colab Notebooks/Remot
 Baixamos o nosso model.h5 armazenado no Firebase e o armazenamos novamente no Drive.
 
 ```python
-model.load_weights('/content/drive/MyDrive/Colab Notebooks/Remote Sensing/Save/model.h5')
+model.load_weights('/content/drive/MyDrive/Colab Notebooks/Remote Sensing/Firebase/model.h5')
 
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 ```

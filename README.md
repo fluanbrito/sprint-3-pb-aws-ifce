@@ -17,6 +17,8 @@ O DataSet escolhido foi o _horses_or_humans_ no qual ele reconhece e classifica 
 ## Impedimentos
 Tivemos algumas dificuldades, uma delas foi a demora de processamento na sessão de treinamento, mais precisamente nos _Epoch_. Fazendo alguns testes, o tempo de processamento diminuia consideravelmente, porém obteve vários erros de _Predicted_, então optamos por deixar da maneira inicial (processamento lento).
 
+Também houveram problemas para armazenar o modelo, de começo foi pensado em utilizar o SQLite, por conta da facilidade de compartilhamento do banco. Porém depois de esbarrar em algumas limitações de tipos de dados que o banco poderia utilizar, foi escolhido o MongoDB.
+
 ## Observação 1:
 Foi colocado comentários com a Tag (#) em todo o código (aqui anexados), sinalizando o passo-a-passo de cada etapa, com isso será citado com exemplos aqui no Readme somente alguns pontos mais relevantes, assim otimizando a quantidade de informações descritas aqui.
 
@@ -48,7 +50,14 @@ O modelo já foi treinado e pode ser baixado na próxima seção. Caso prefira t
 
 - Seção de Importação do modelo(MongoDB)
 
-Nessa seção teremos a importação do modelo para MongoDB (banco de dados escolhido), no qual foi usado o seguinte comando para a instalação do wrapper do mongo para python.
+Nessa seção teremos a importação do modelo para MongoDB (banco de dados escolhido). Para persistir a informação foi utilizado o *MongoDB Atlas*, uma plataforma que permite a hospedagem de um banco de dados em mongo online. O Atlas possui uma assinatura gratuita que dá a possibilidade de usar o serviço sem nenhum custo de maneira limitada.
+
+![Atlas](https://cdn.discordapp.com/attachments/623271108593975326/1059482031978983504/image.png)
+
+Para o **Upload** do modelo no banco foram usados os seguintes comandos:
+![Upload](https://cdn.discordapp.com/attachments/623271108593975326/1059482789680001065/image.png)
+
+E para o **Consumo** o primeiro passo é instalar o wrapper do mongo para python.
 ```
 ! python -m pip install pymongo==3.7.2
 ```

@@ -77,6 +77,7 @@ Em seguida foram usados os comandos em que é selecionado o banco, é pego a ref
 ![Captura de Tela (117)](https://user-images.githubusercontent.com/106123150/210188601-9fc4d7c0-04c3-456d-baf7-422b85a457e0.png)
 
 - Seção de Teste e Validação:
+
 Nessa seção teremos a criação de uma função para testar o "dataset de testes" e em seguida foi feito o teste com cavalos percorrendo uma lista e testando, como também foi feito o mesmo teste com humanos, percorrendo uma lista e testando, como mostra as imagens a seguir:
 ![Captura de Tela (125)](https://user-images.githubusercontent.com/106123150/210189142-354634e2-5d1d-4b88-8d81-5d532574afbd.png)
 ![Captura de Tela (123)](https://user-images.githubusercontent.com/106123150/210189205-c2d38795-4cc7-44e6-9685-1a3393f43728.png)
@@ -84,6 +85,7 @@ Nessa seção teremos a criação de uma função para testar o "dataset de test
 - Seção de Gráfico e Métricas de Desempenho:
 
 Nessa seção teremos um gráfico para a visualização das métricas de desempenho onde a faixa laranja corresponde a _perda_(loss) e a faixa azul corresponde a _precisão_(accuracy).
+
 ![img grafico](https://user-images.githubusercontent.com/106123150/210189347-ca5fc239-f0cc-4ed0-bdfe-32739358ab7b.png)
 
 - Seção de Visualização das Camadas/Layers:
